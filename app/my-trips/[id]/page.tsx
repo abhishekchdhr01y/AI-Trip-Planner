@@ -8,7 +8,7 @@ import { Id } from "@/convex/_generated/dataModel";
 import TripView from "@/app/create-new-trip/_components/TripView";
 import MapBoxMap from "@/app/create-new-trip/_components/MapBoxMap";
 import Link from "next/link";
-import { ArrowLeft, Map, MessageSquare } from "lucide-react";
+import { ArrowLeft, MessageSquare, Map } from "lucide-react";
 
 export default function TripDetailPage() {
   const params = useParams();
@@ -73,13 +73,14 @@ export default function TripDetailPage() {
           <TripView trip={tripRecord.tripData} />
         </div>
 
-        {/* Right Column: Interactive Mapbox Map */}
+        {/* Right Column: Full-height Interactive Mapbox Map on Mobile */}
         <div
-          className={`relative w-full lg:w-1/2 h-full bg-zinc-950 ${
-            showMapMobile ? "block" : "hidden lg:block"
+          className={`w-full lg:w-1/2 h-full flex-1 bg-zinc-950 ${
+            showMapMobile ? "flex flex-col h-full w-full" : "hidden lg:block"
           }`}
         >
           <MapBoxMap
+            trip={tripRecord.tripData}
             destination={tripRecord.destination}
             selectedLocation={activeLocation}
           />

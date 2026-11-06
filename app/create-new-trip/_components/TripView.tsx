@@ -88,29 +88,29 @@ function HotelCard({ hotel, destination }: { hotel: HotelType; destination: stri
 export default function TripView({ trip }: { trip: TripPlan | null }) {
   if (!trip) {
     return (
-      <div className='flex h-[calc(100vh-5rem)] items-center justify-center rounded-2xl border border-dashed border-zinc-700 text-gray-500 p-6 text-center text-sm sm:text-base'>
+      <div className='flex h-full items-center justify-center rounded-2xl border border-dashed border-zinc-800 text-gray-500 p-6 text-center text-sm sm:text-base'>
         Your trip will appear here
       </div>
     )
   }
 
   return (
-    <div className='h-[calc(100vh-5rem)] overflow-y-auto rounded-2xl border border-zinc-700 bg-zinc-950 p-4 sm:p-6 text-white [scrollbar-width:none] [&::-webkit-scrollbar]:hidden w-full'>
+    <div className='h-full overflow-y-auto rounded-2xl bg-zinc-950 p-4 sm:p-6 text-white [scrollbar-width:none] [&::-webkit-scrollbar]:hidden w-full'>
       <h2 className='text-2xl sm:text-3xl font-bold text-amber-500 tracking-tight break-words'>{trip.title}</h2>
       <p className='mt-1 text-xs sm:text-sm text-gray-400 break-words'>
         {trip.origin} → {trip.destination}
       </p>
 
       <div className='mt-3 sm:mt-4 flex flex-wrap gap-2 sm:gap-3 text-xs sm:text-sm'>
-        <span className='flex items-center gap-1 rounded-full bg-zinc-800 px-3 py-1'>
+        <span className='flex items-center gap-1 rounded-full bg-zinc-900 border border-zinc-800 px-3 py-1'>
           <Calendar className='h-3.5 w-3.5 sm:h-4 sm:w-4 text-amber-500 shrink-0' />
           {trip.duration}
         </span>
-        <span className='flex items-center gap-1 rounded-full bg-zinc-800 px-3 py-1'>
+        <span className='flex items-center gap-1 rounded-full bg-zinc-900 border border-zinc-800 px-3 py-1'>
           <Wallet className='h-3.5 w-3.5 sm:h-4 sm:w-4 text-amber-500 shrink-0' />
           {trip.budget}
         </span>
-        <span className='flex items-center gap-1 rounded-full bg-zinc-800 px-3 py-1'>
+        <span className='flex items-center gap-1 rounded-full bg-zinc-900 border border-zinc-800 px-3 py-1'>
           <Users className='h-3.5 w-3.5 sm:h-4 sm:w-4 text-amber-500 shrink-0' />
           {trip.groupSize}
         </span>
@@ -129,14 +129,14 @@ export default function TripView({ trip }: { trip: TripPlan | null }) {
       <h3 className='mt-6 sm:mt-8 mb-3 text-lg sm:text-xl font-semibold'>Itinerary</h3>
       <div className='flex flex-col gap-4 sm:gap-5'>
         {trip.days?.map((d) => (
-          <div key={d.day} className='rounded-xl border border-zinc-700 bg-zinc-900 p-3.5 sm:p-4'>
+          <div key={d.day} className='rounded-xl border border-zinc-800 bg-zinc-900 p-3.5 sm:p-4'>
             <p className='mb-3 text-base sm:text-lg font-bold'>
               <span className='text-amber-500'>Day {d.day}</span> · {d.title}
             </p>
-            <div className='flex flex-col gap-3 border-l-2 border-amber-600 pl-3 sm:pl-4'>
+            <div className='flex flex-col gap-3 border-l-2 border-amber-500/60 pl-3 sm:pl-4'>
               {d.activities?.map((a, i) => (
                 <div key={i} className='space-y-1'>
-                  <p className='text-[10px] sm:text-xs uppercase tracking-wide text-amber-500'>{a.time}</p>
+                  <p className='text-[10px] sm:text-xs uppercase tracking-wide text-amber-500 font-semibold'>{a.time}</p>
                   <p className='font-semibold text-sm sm:text-base'>{a.title}</p>
                   <p className='text-xs sm:text-sm text-gray-400'>{a.description}</p>
                   {a.place && (
